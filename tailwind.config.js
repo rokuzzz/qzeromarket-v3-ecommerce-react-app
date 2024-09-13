@@ -3,7 +3,7 @@ const { fontFamily } = require('tailwindcss/defaultTheme');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ['class'],
-  content: ['app/**/*.{ts,tsx}', 'components/**/*.{ts,tsx}'],
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './src/modules/**/*.{js,jsx,ts,tsx}'],
   theme: {
     container: {
       center: true,
@@ -13,6 +13,11 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        merriweather: ['"Merriweather"', 'serif'],
+        fredoka: ['"Fredoka"', 'rounded sans-serif'],
+        opensans: ['"Open Sans"', 'sans-serif'],
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
