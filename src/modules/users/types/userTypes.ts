@@ -1,6 +1,12 @@
-enum Role {
+export enum Role {
   Admin = 'Admin',
   User = 'User',
+}
+
+export interface GetUsersParams {
+  page?: number;
+  perPage?: number;
+  role?: Role;
 }
 
 export interface GetUserDto {
@@ -12,19 +18,9 @@ export interface GetUserDto {
   avatar?: string;
 }
 
-export interface PartialUpdateUserDto {
+export interface UpdateUserDto {
   email?: string;
   firstName?: string;
   lastName?: string;
   role?: Role;
-  avatar?: string;
-  password?: string;
-}
-
-export interface UpdateUserDto {
-  email: string;
-  firstName: string;
-  lastName: string;
-  password: string;
-  avatar?: string;
 }
