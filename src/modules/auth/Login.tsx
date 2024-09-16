@@ -1,14 +1,14 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { HTTPError } from 'ky';
 
+import { useUser } from '../users/context/userContext';
 import { useLogin } from './api/authApi';
 import { LoginDto } from './types/authTypes';
 import { ToastAction } from '../shared/components/ui/toast';
 import { useToast } from '../shared/hooks/use-toast';
-import { useUser } from '../users/context/userContext';
 import {
   Form,
   FormControl,
@@ -28,9 +28,8 @@ const loginFormSchema = z.object({
 
 const Login = () => {
   const { mutateAsync: login, isPending } = useLogin();
-  const navigate = useNavigate();
   const { toast } = useToast();
-  const { setToken } = useUser(); // Use the setToken function from UserContext
+  const { setToken } = useUser();
 
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
@@ -43,12 +42,12 @@ const Login = () => {
   const onSubmit = async (data: LoginDto) => {
     try {
       const result = await login(data);
-      setToken(result.token); // Use setToken from UserContext
+      setToken(result.token);
+
       toast({
         title: 'Success',
         description: "You've successfully logged in!",
       });
-      navigate('/');
     } catch (err: any) {
       let errorMessage = 'An unexpected error occurred. Please try again.';
 

@@ -1,16 +1,8 @@
 import React, { createContext, useContext } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
-import { jwtDecode } from 'jwt-decode';
 
 import { GetUserDto } from '../types/userTypes';
-import { useGetUserById } from '../api/userApi';
-
-interface TokenPayload {
-  nameid: string; // Adjust this according to your JWT structure
-  role: string;
-  exp: number;
-  iat: number;
-}
+import { useGetCurrentUser } from '../api/userApi';
 
 interface UserContextType {
   token: string | null;
@@ -38,32 +30,22 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
       localStorage.setItem('token', newToken);
     } else {
       localStorage.removeItem('token');
-      queryClient.removeQueries({ queryKey: ['getUserById'] });
+      queryClient.removeQueries({ queryKey: ['getCurrentUser'] });
     }
   };
 
   const logout = () => {
     setToken(null);
+    queryClient.removeQueries({ queryKey: ['getCurrentUser'] });
   };
 
-  // Decode token to get userId
-  let userId: number | null = null;
-  if (token) {
-    try {
-      const decoded = jwtDecode<TokenPayload>(token);
-      userId = parseInt(decoded.nameid, 10);
-    } catch (error) {
-      console.error('Failed to decode token:', error);
-    }
-  }
-
-  // Use the existing useGetUserById hook
   const {
     data: user,
     isLoading,
     error,
-  } = useGetUserById(userId, {
-    enabled: userId !== null,
+    refetch: refetchUser,
+  } = useGetCurrentUser({
+    enabled: !!token,
   });
 
   return (
