@@ -11,6 +11,7 @@ interface UserContextType {
   logout: () => void;
   isLoading: boolean;
   error: Error | null;
+  refetch: () => void; // Add this line
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -50,7 +51,15 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <UserContext.Provider
-      value={{ token, user, setToken, logout, isLoading, error }}
+      value={{
+        token,
+        user,
+        setToken,
+        logout,
+        isLoading,
+        error,
+        refetch: refetchUser, // Add this line
+      }}
     >
       {children}
     </UserContext.Provider>

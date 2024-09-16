@@ -1,13 +1,18 @@
 import { useUser } from './context/userContext';
+import ProfileCard from './components/ProfileCard';
 
 const UserProfile = () => {
-  const { user } = useUser();
-  console.log(user);
+  const { user, isLoading, error, refetch } = useUser();
 
   return (
-    <div>
-      <p>{user?.firstName}</p>
-      <p>{user?.lastName}</p>
+    <div className='container mx-auto px-0 space-y-8'>
+      <ProfileCard
+        user={user}
+        isLoading={isLoading}
+        error={error}
+        refetch={refetch}
+      />
+      {/* Other components can be added here */}
     </div>
   );
 };
