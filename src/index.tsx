@@ -6,6 +6,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
+import Home from './modules/products/Home';
+import Login from './modules/auth/Login';
+import { UserProvider } from '../src/modules/users/context/userContext';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
@@ -20,11 +23,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <div>Home page</div>,
+        element: <Home />,
       },
       {
         path: '/login',
-        element: <div>Login page</div>,
+        element: <Login />,
       },
       {
         path: '/register',
@@ -49,7 +52,9 @@ const router = createBrowserRouter([
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <UserProvider>
+        <RouterProvider router={router} />
+      </UserProvider>
     </QueryClientProvider>
   </React.StrictMode>
 );

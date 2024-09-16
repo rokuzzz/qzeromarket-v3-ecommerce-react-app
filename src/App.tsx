@@ -1,13 +1,16 @@
 import { Outlet } from 'react-router';
+
 import Navbar from './modules/shared/components/NavBar/Navbar';
+import { Toaster } from './modules/shared/components/ui/toaster';
 
 const App = () => {
   return (
     <div>
       <Navbar />
-      <main>
+      <main className='px-0 sm:px-8 md:px-16 xl:px-40'>
         <Outlet />
       </main>
+      <Toaster />
     </div>
   );
 };
