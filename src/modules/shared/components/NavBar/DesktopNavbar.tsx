@@ -1,10 +1,19 @@
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 import { HomeIcon, InfoIcon } from '../../assets/icons/';
 import { Button } from '../ui/button';
+import { useUser } from '../../../users/context/userContext';
+import { Role } from '../../../users/types/userTypes';
 
 const DesktopNavbar = () => {
   const location = useLocation();
+  const { user, logout } = useUser();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   const navLinkClassName = (isHome: boolean, isActive: boolean) => {
     const baseClassName =
@@ -50,10 +59,27 @@ const DesktopNavbar = () => {
         </NavLink>
       </div>
 
-      <div className='flex-1 flex justify-end'>
-        <Button className='w-[74.99px]' variant={'default'} size={'sm'} asChild>
-          <Link to={'/login'}>Login</Link>
-        </Button>
+      <div className='flex-1 flex justify-end items-center space-x-2'>
+        {user ? (
+          <>
+            {user.role === Role.Admin ? (
+              <Button variant={'outline'} size={'sm'} asChild>
+                <Link to='/admin-dashboard'>Dashboard</Link>
+              </Button>
+            ) : (
+              <Button variant={'default'} size={'sm'} asChild>
+                <Link to='/user-profile'>Profile</Link>
+              </Button>
+            )}
+            <Button variant={'default'} size={'sm'} onClick={handleLogout}>
+              Logout
+            </Button>
+          </>
+        ) : (
+          <Button variant={'default'} size={'sm'} asChild>
+            <Link to='/login'>Login</Link>
+          </Button>
+        )}
       </div>
     </nav>
   );

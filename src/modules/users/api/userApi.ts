@@ -53,7 +53,23 @@ export const useGetUserById = (
   });
 };
 
-export const useAdminUpdateUser = (
+export const useGetCurrentUser = (
+  options?: Omit<
+    UseQueryOptions<GetUserDto, Error, GetUserDto>,
+    'queryKey' | 'queryFn'
+  >
+) => {
+  return useQuery<GetUserDto, Error>({
+    queryKey: ['getCurrentUser'],
+    queryFn: async () => {
+      return api.get('users/me').json<GetUserDto>();
+    },
+    enabled: true,
+    ...options,
+  });
+};
+
+export const useUpdateUser = (
   userId: number,
   options?: UseMutationOptions<GetUserDto, Error, UpdateUserDto>
 ) => {
@@ -72,7 +88,7 @@ export const useAdminUpdateUser = (
   });
 };
 
-export const useAdminDeleteUser = (
+export const useDeleteUser = (
   options?: UseMutationOptions<void, Error, number>
 ) => {
   return useMutation<void, Error, number>({
