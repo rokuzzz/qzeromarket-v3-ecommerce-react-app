@@ -12,7 +12,6 @@ const UserProfile = () => {
         error={error}
         refetch={refetch}
       />
-      {/* Other components can be added here */}
     </div>
   );
 };
