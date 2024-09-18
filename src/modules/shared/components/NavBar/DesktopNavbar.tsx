@@ -35,7 +35,7 @@ const DesktopNavbar = () => {
       <div className='flex-1 flex justify-start'>
         <NavLink
           to='/'
-          className='font-merriweather text-2xl sm:text-3xl font-bold hover:text-amber-500 transition-colors duration-200'
+          className='font-merriweather text-4xl font-bold hover:text-amber-500 transition-colors duration-200'
         >
           QZM<span className='text-amber-500 font-merriweather'>.</span>
         </NavLink>
@@ -43,23 +43,25 @@ const DesktopNavbar = () => {
 
       <div className='flex-1 flex justify-center space-x-4 sm:space-x-6'>
         <NavLink
-          to='/'
+          to='/products'
           className={({ isActive }) => navLinkClassName(true, isActive)}
         >
-          <HomeIcon />
-          <span className='ml-1 hidden sm:inline'>Home</span>
+          <span className='text-sm font-medium uppercase ml-1 hidden sm:inline'>
+            Products
+          </span>
         </NavLink>
 
         <NavLink
           to='/about'
           className={({ isActive }) => navLinkClassName(false, isActive)}
         >
-          <InfoIcon />
-          <span className='ml-1 hidden sm:inline'>About</span>
+          <span className='text-sm font-medium uppercase ml-1 hidden sm:inline'>
+            About
+          </span>
         </NavLink>
       </div>
 
-      <div className='flex-1 flex justify-end items-center space-x-2'>
+      <div className='flex-1 flex justify-end items-center space-x-4'>
         {user ? (
           <>
             {user.role === Role.Admin ? (
@@ -67,9 +69,14 @@ const DesktopNavbar = () => {
                 <Link to='/admin-dashboard'>Dashboard</Link>
               </Button>
             ) : (
-              <Button variant={'default'} size={'sm'} asChild>
-                <Link to='/user-profile'>Profile</Link>
-              </Button>
+              <NavLink
+                to='/user-profile'
+                className={({ isActive }) => navLinkClassName(false, isActive)}
+              >
+                <span className='text-sm font-medium uppercase hidden sm:inline'>
+                  Profile
+                </span>
+              </NavLink>
             )}
             <Button variant={'default'} size={'sm'} onClick={handleLogout}>
               Logout

@@ -7,12 +7,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
-import Home from './modules/products/Home';
 import Login from './modules/auth/Login';
 import UserProfile from './modules/users/UserProfile';
 import AdminDashboard from './modules/users//AdminDashboard';
 import { UserProvider } from '../src/modules/users/context/userContext';
 import PublicRoute from './modules/shared/components/Routes/PublicRoute';
+import Products from './modules/products/Products';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
@@ -26,8 +26,8 @@ const router = createBrowserRouter([
     errorElement: <div>Error page</div>,
     children: [
       {
-        path: '/',
-        element: <Home />,
+        path: '/products',
+        element: <Products />,
       },
       {
         path: '/login',
