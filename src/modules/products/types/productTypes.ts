@@ -1,7 +1,6 @@
-import { PaginationOptions } from '../../shared/types/sharedTypes';
+import { BaseDto, PaginationOptions } from '../../shared/types/sharedTypes';
 
-export interface GetProductDto {
-  id: number;
+export interface GetProductDto extends BaseDto {
   title: string;
   description: string;
   price: number;
@@ -10,7 +9,7 @@ export interface GetProductDto {
   productImage: { url: string }[];
 }
 
-export interface CreateProductDto {
+export interface CreateProductDto extends BaseDto {
   title: string;
   description: string;
   price: number;
@@ -19,7 +18,7 @@ export interface CreateProductDto {
   productImages?: File[];
 }
 
-export interface UpdateProductDto {
+export interface UpdateProductDto extends BaseDto {
   title?: string;
   description?: string;
   price?: number;

@@ -3,6 +3,10 @@ export interface ApiError {
   detail: string;
 }
 
+export interface BaseDto {
+  id: number;
+}
+
 export interface PaginationOptions {
   page?: number;
   perPage?: number;

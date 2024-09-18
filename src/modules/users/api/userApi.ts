@@ -6,7 +6,7 @@ import {
 } from '@tanstack/react-query';
 
 import { GetUserDto, GetUsersParams, UpdateUserDto } from '../types/userTypes';
-import { api } from '../../shared/api/sharedApi';
+import { api } from '../../shared/api/apiClient';
 import { PaginatedResult } from '../../shared/types/sharedTypes';
 
 export const useGetAllUsers = (

@@ -5,7 +5,7 @@ import {
   UseQueryOptions,
 } from '@tanstack/react-query';
 
-import { api } from '../../shared/api/sharedApi';
+import { api } from '../../shared/api/apiClient';
 import { PaginatedResult, ApiError } from '../../shared/types/sharedTypes';
 import {
   GetProductDto,

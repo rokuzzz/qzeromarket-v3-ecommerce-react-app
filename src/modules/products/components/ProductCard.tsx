@@ -9,11 +9,20 @@ interface ProductCardProps {
 const ProductCard = ({ product }: ProductCardProps) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
-  const firstImageUrl = `http://localhost:5169/${product.productImage[0].url}`;
+  let firstImageUrl: string;
+  let secondImageUrl: string | null;
 
-  const secondImageUrl = product.productImage[1]?.url
-    ? `http://localhost:5169/${product.productImage[1].url}`
-    : null;
+  if (product.productImage.length > 1) {
+    // If there are two or more images, swap their order
+    firstImageUrl = `http://localhost:5169/${product.productImage[1].url}`;
+    secondImageUrl = `http://localhost:5169/${product.productImage[0].url}`;
+  } else {
+    // If there's only one image or no images, keep the original order
+    firstImageUrl = `http://localhost:5169/${
+      product.productImage[0]?.url || ''
+    }`;
+    secondImageUrl = null;
+  }
 
   return (
     <NavLink to={`/products/${product.id}`}>
@@ -40,10 +49,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
             />
           )}
         </div>
-        <h3 className='font-opensans text-base font-bold leading-tight text-center line-clamp-1 mt-2 px-4'>
+        <h3 className='font-opensans text-sm font-bold leading-tight text-center line-clamp-1 mt-2 px-4'>
           {product.title}
         </h3>
-        <p className='text-amber-500 text-sm font-opensans font-bold text-center mt-2'>
+        <p className='text-amber-500 text-xs font-opensans font-bold text-center mt-2'>
           €{product.price.toFixed(2)}
         </p>
       </div>

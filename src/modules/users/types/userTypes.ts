@@ -1,3 +1,5 @@
+import { BaseDto } from '../../shared/types/sharedTypes';
+
 export enum Role {
   Admin = 'Admin',
   User = 'User',
@@ -9,7 +11,7 @@ export interface GetUsersParams {
   role?: Role;
 }
 
-export interface GetUserDto {
+export interface GetUserDto extends BaseDto {
   id: number;
   email: string;
   firstName: string;
@@ -18,7 +20,7 @@ export interface GetUserDto {
   avatar?: string;
 }
 
-export interface UpdateUserDto {
+export interface UpdateUserDto extends BaseDto {
   email?: string;
   firstName?: string;
   lastName?: string;
