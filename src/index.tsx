@@ -12,6 +12,7 @@ import UserProfile from './modules/users/UserProfile';
 import AdminDashboard from './modules/users//AdminDashboard';
 import { UserProvider } from '../src/modules/users/context/userContext';
 import PublicRoute from './modules/shared/components/Routes/PublicRoute';
+import ProtectedRoute from './modules/shared/components/Routes/PublicRoute';
 import Products from './modules/products/Products';
 
 const container = document.getElementById('root')!;
@@ -47,7 +48,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/admin-dashboard',
-        element: <AdminDashboard />,
+        element: (
+          <ProtectedRoute>
+            <AdminDashboard />
+          </ProtectedRoute>
+        ),
       },
       {
         path: '/products/:productId',
