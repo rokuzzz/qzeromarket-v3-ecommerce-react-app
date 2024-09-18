@@ -5,8 +5,8 @@ import {
   UseQueryOptions,
 } from '@tanstack/react-query';
 
-import { api } from '../api/apiClient';
-import { PaginatedResult, ApiError } from '../types/sharedTypes';
+import { api } from '../../shared/api/apiClient';
+import { PaginatedResult, ApiError } from '../../shared/types/sharedTypes';
 import {
   GetCategoryDto,
   CreateCategoryDto,

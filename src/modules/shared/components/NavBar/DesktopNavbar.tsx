@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { useGetAllCategories } from '../../../shared/api/categoryApi';
+import { useGetAllCategories } from '../../../products/api/categoryApi';
 import DesktopMainNavbar from './DesktopMainNavbar';
 import CategoriesNavbar from './CategoriesNavbar';
 import { GetUserDto } from '@/users/types/userTypes';

@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { CustomNavLink } from '../ui/CustomNavLink';
 import { GetUserDto } from '../../../users/types/userTypes';
 import UserMenu from './UserMenu';
+import CartSheet from '../../../cart/CartSheet';
 
 interface MainNavbarProps {
   user?: GetUserDto;
@@ -11,7 +12,7 @@ interface MainNavbarProps {
 }
 
 const DesktopMainNavbar = ({ user, logout }: MainNavbarProps) => (
-  <div className='flex items-center justify-between px-16 xl:px-40 py-4'>
+  <div className='flex items-center justify-between px-16 xl:px-40 py-6'>
     <div className='flex-1 flex justify-start'>
       <NavLink
         to='/'
@@ -26,7 +27,8 @@ const DesktopMainNavbar = ({ user, logout }: MainNavbarProps) => (
       <CustomNavLink to='/about'>About</CustomNavLink>
     </div>
 
-    <div className='flex-1 flex justify-end items-center space-x-4'>
+    <div className='flex-1 flex justify-end items-center'>
+      <CartSheet />
       <UserMenu user={user} logout={logout} />
     </div>
   </div>

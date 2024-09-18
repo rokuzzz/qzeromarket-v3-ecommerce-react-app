@@ -1,6 +1,6 @@
 import React from 'react';
 import { CustomNavLink } from '../ui/CustomNavLink';
-import { GetCategoryDto } from '@/shared/types/categoryTypes';
+import { GetCategoryDto } from '@/products/types/categoryTypes';
 
 interface CategoriesNavbarProps {
   categories: GetCategoryDto[];

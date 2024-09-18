@@ -11,7 +11,7 @@ interface UserContextType {
   logout: () => void;
   isLoading: boolean;
   error: Error | null;
-  refetch: () => void; // Add this line
+  refetch: () => void;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -58,7 +58,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
         logout,
         isLoading,
         error,
-        refetch: refetchUser, // Add this line
+        refetch: refetchUser,
       }}
     >
       {children}

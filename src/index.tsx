@@ -15,6 +15,7 @@ import UserProfile from './modules/users/UserProfile';
 import AdminDashboard from './modules/users//AdminDashboard';
 import Products from './modules/products/Products';
 import ProductDetails from './modules/products/ProductDetails';
+import { CartProvider } from './modules/cart/context/cartContext';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
@@ -67,7 +68,6 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
-      // ... other routes
     ],
   },
 ]);
@@ -77,7 +77,9 @@ root.render(
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools />
       <UserProvider>
-        <RouterProvider router={router} />
+        <CartProvider>
+          <RouterProvider router={router} />
+        </CartProvider>
       </UserProvider>
     </QueryClientProvider>
   </React.StrictMode>

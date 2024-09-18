@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useGetProductById } from './api/productApi';
-import { useGetCategoryById } from '../shared/api/categoryApi';
+import { useGetCategoryById } from './api/categoryApi';
 import ProductImage from './components/ProductDetails/ProductImage';
 import ProductMainInfo from './components/ProductDetails/ProductMainInfo';
 import ProductAdditionalInfo from './components/ProductDetails/ProductAdditionalInfo';
@@ -52,22 +52,27 @@ const ProductDetails = () => {
           title={product.title}
         />
 
-        <div className='flex-1 flex flex-col px-4 sm:px-0 space-y-4'>
-          <ProductMainInfo
-            title={product.title}
-            rating={0}
-            price={product.price}
-            description={product.description}
-          />
+        <div className='flex-1 flex flex-col justify-between px-4 sm:px-0'>
+          <div className='space-y-4'>
+            <ProductMainInfo
+              title={product.title}
+              rating={0}
+              price={product.price}
+              description={product.description}
+            />
 
-          <ProductAdditionalInfo categoryName={categoryData?.name || 'N/A'} />
+            <ProductAdditionalInfo categoryName={categoryData?.name || 'N/A'} />
+          </div>
 
-          <ProductPurchaseSection
-            stock={product.stock}
-            quantity={quantity}
-            incrementQuantity={incrementQuantity}
-            decrementQuantity={decrementQuantity}
-          />
+          <div className='mt-auto pt-4'>
+            <ProductPurchaseSection
+              productId={product.id}
+              stock={product.stock}
+              quantity={quantity}
+              incrementQuantity={incrementQuantity}
+              decrementQuantity={decrementQuantity}
+            />
+          </div>
         </div>
       </div>
     </div>

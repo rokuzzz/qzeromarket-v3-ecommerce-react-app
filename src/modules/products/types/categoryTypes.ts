@@ -1,4 +1,4 @@
-import { PaginationOptions } from './sharedTypes';
+import { PaginationOptions } from '../../shared/types/sharedTypes';
 
 export interface GetCategoryDto {
   id: number;

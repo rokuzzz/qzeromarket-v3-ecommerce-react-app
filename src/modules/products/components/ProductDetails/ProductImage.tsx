@@ -9,7 +9,7 @@ const ProductImage = ({ imageUrl, title }: ProductImageProps) => {
     : '/placeholder-image.png';
 
   return (
-    <div className='w-full lg:w-5/12 aspect-[4/5] relative'>
+    <div className='w-full lg:w-5/12 aspect-[1/1] relative'>
       <img
         src={imageSrc}
         alt={title}
