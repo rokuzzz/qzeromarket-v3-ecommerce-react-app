@@ -43,7 +43,7 @@ const UserMenu = ({ user, logout }: UserMenuProps) => {
   }
 
   return (
-    <Button variant={'default'} size={'sm'} asChild>
+    <Button className='text-amber-500 font-bold' variant={'link'} size={'sm'} asChild>
       <Link to='/login'>Login</Link>
     </Button>
   );

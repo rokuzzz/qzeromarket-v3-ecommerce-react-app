@@ -1,7 +1,10 @@
+import { useUser } from '../../../users/context/userContext';
 import DesktopNavbar from './DesktopNavbar';
 import MobileNavbar from './MobileNavbar';
 
 const Navbar = () => {
+  const { user, logout } = useUser();
+
   return (
     <>
       {/* Render MobileNavBar for small screens */}
@@ -11,7 +14,7 @@ const Navbar = () => {
 
       {/* Render DesktopNavBar for large screens */}
       <div className='hidden lg:block'>
-        <DesktopNavbar />
+        <DesktopNavbar user={user} logout={logout} />
       </div>
     </>
   );

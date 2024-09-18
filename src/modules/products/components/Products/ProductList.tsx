@@ -1,5 +1,5 @@
 import ProductCard from './ProductCard';
-import { GetProductDto } from '../types/productTypes';
+import { GetProductDto } from '../../types/productTypes';
 
 interface ProductListProps {
   products: GetProductDto[];

@@ -1,13 +1,18 @@
+import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { useUser } from '../../../users/context/userContext';
 import { useGetAllCategories } from '../../../shared/api/categoryApi';
 import DesktopMainNavbar from './DesktopMainNavbar';
 import CategoriesNavbar from './CategoriesNavbar';
+import { GetUserDto } from '@/users/types/userTypes';
 
-const DesktopNavbar: React.FC = () => {
+interface DesktopNavbarProps {
+  user?: GetUserDto;
+  logout: () => void;
+}
+
+const DesktopNavbar = ({ user, logout }: DesktopNavbarProps) => {
   const location = useLocation();
-  const { user, logout } = useUser();
-  const { data } = useGetAllCategories();
+  const { data, isLoading } = useGetAllCategories();
 
   const categories = data?.items || [];
   const isProductsPage = location.pathname.startsWith('/products');
@@ -15,8 +20,8 @@ const DesktopNavbar: React.FC = () => {
   return (
     <nav className='z-50 bg-white'>
       <DesktopMainNavbar user={user} logout={logout} />
-      {isProductsPage && categories.length > 0 && (
-        <CategoriesNavbar categories={categories} />
+      {isProductsPage && (
+        <CategoriesNavbar categories={categories} isLoading={isLoading} />
       )}
     </nav>
   );

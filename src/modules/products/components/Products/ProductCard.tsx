@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { GetProductDto } from '../types/productTypes';
+import { GetProductDto } from '../../types/productTypes';
 
 interface ProductCardProps {
   product: GetProductDto;
