@@ -32,7 +32,7 @@ const UserMenu = ({ user, logout }: UserMenuProps) => {
           <CustomNavLink to='/user-profile'>Profile</CustomNavLink>
         )}
         <Button
-          className='text-red-500'
+          className='text-red-500 pr-0'
           variant={'link'}
           size={'sm'}
           onClick={handleLogout}
