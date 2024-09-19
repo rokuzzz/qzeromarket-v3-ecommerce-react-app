@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { HTTPError } from 'ky';
@@ -8,8 +8,8 @@ import { useRegister } from './api/authApi';
 import { RegisterDto } from './types/authTypes';
 import { useToast } from '../shared/hooks/use-toast';
 import { ToastAction } from '../shared/components/ui/toast';
+import AuthForm from './components/AuthForm';
 import {
-  Form,
   FormControl,
   FormField,
   FormItem,
@@ -17,8 +17,6 @@ import {
   FormMessage,
 } from '../shared/components/ui/form';
 import { Input } from '../shared/components/ui/input';
-import { Button } from '../shared/components/ui/button';
-import { CardFooter } from '../shared/components/ui/card';
 
 const registerFormSchema = z
   .object({
@@ -63,7 +61,6 @@ const Register = () => {
 
   const onSubmit = async (data: RegisterFormValues) => {
     try {
-      // Exclude confirmPassword from the data sent to the server
       const { confirmPassword, ...registerData } = data;
       await register(registerData as RegisterDto);
 
@@ -92,157 +89,117 @@ const Register = () => {
     }
   };
 
-  return (
-    <div className='flex sm:justify-center sm:mt-16'>
-      <div className='w-full sm:max-w-md p-8 space-y-6 bg-white sm:rounded-lg sm:shadow-lg'>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>
-            <FormField
-              control={form.control}
-              name='email'
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input
-                      type='email'
-                      placeholder='example@email.com'
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+  const renderFields = () => (
+    <>
+      <FormField
+        control={form.control}
+        name='email'
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Email</FormLabel>
+            <FormControl>
+              <Input type='email' placeholder='example@email.com' {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
 
-            <div className='flex space-x-4'>
-              <FormField
-                control={form.control}
-                name='password'
-                render={({ field }) => (
-                  <FormItem className='flex-1'>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input
-                        type='password'
-                        placeholder='************'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+      <div className='flex space-x-4'>
+        <FormField
+          control={form.control}
+          name='password'
+          render={({ field }) => (
+            <FormItem className='flex-1'>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <Input type='password' placeholder='************' {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-              <FormField
-                control={form.control}
-                name='confirmPassword'
-                render={({ field }) => (
-                  <FormItem className='flex-1'>
-                    <FormLabel>Confirm Password</FormLabel>
-                    <FormControl>
-                      <Input
-                        type='password'
-                        placeholder='************'
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-
-            <div className='flex space-x-4'>
-              <FormField
-                control={form.control}
-                name='firstName'
-                render={({ field }) => (
-                  <FormItem className='flex-1'>
-                    <FormLabel>First Name</FormLabel>
-                    <FormControl>
-                      <Input type='text' placeholder='John' {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name='lastName'
-                render={({ field }) => (
-                  <FormItem className='flex-1'>
-                    <FormLabel>Last Name</FormLabel>
-                    <FormControl>
-                      <Input type='text' placeholder='Doe' {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-
-            <FormField
-              control={form.control}
-              name='avatar'
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Avatar</FormLabel>
-                  <FormControl>
-                    <Input
-                      type='file'
-                      accept='image/*'
-                      onChange={(e) => {
-                        const file = e.target.files?.[0];
-                        if (file) {
-                          field.onChange(file);
-                        }
-                      }}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <CardFooter className='flex flex-col space-y-2 p-0'>
-              <Button type='submit' className='w-full' disabled={isPending}>
-                {isPending ? (
-                  <svg
-                    className='animate-spin -ml-1 mr-3 h-5 w-5 text-white'
-                    xmlns='http://www.w3.org/2000/svg'
-                    fill='none'
-                    viewBox='0 0 24 24'
-                  >
-                    <circle
-                      className='opacity-25'
-                      cx='12'
-                      cy='12'
-                      r='10'
-                      stroke='currentColor'
-                      strokeWidth='4'
-                    ></circle>
-                    <path
-                      className='opacity-75'
-                      fill='currentColor'
-                      d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
-                    ></path>
-                  </svg>
-                ) : (
-                  'Register'
-                )}
-              </Button>
-              <Link to='/login'>
-                <Button type='button' variant='link' className='p-0'>
-                  Already have an account? Login
-                </Button>
-              </Link>
-            </CardFooter>
-          </form>
-        </Form>
+        <FormField
+          control={form.control}
+          name='confirmPassword'
+          render={({ field }) => (
+            <FormItem className='flex-1'>
+              <FormLabel>Confirm Password</FormLabel>
+              <FormControl>
+                <Input type='password' placeholder='************' {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
       </div>
-    </div>
+
+      <div className='flex space-x-4'>
+        <FormField
+          control={form.control}
+          name='firstName'
+          render={({ field }) => (
+            <FormItem className='flex-1'>
+              <FormLabel>First Name</FormLabel>
+              <FormControl>
+                <Input type='text' placeholder='John' {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name='lastName'
+          render={({ field }) => (
+            <FormItem className='flex-1'>
+              <FormLabel>Last Name</FormLabel>
+              <FormControl>
+                <Input type='text' placeholder='Doe' {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
+
+      <FormField
+        control={form.control}
+        name='avatar'
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Avatar</FormLabel>
+            <FormControl>
+              <Input
+                type='file'
+                accept='image/*'
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) {
+                    field.onChange(file);
+                  }
+                }}
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+    </>
+  );
+
+  return (
+    <AuthForm
+      form={form}
+      onSubmit={onSubmit}
+      isPending={isPending}
+      renderFields={renderFields}
+      submitText='Register'
+      alternativeText='Already have an account? Login'
+      alternativeLink='/login'
+    />
   );
 };
 
