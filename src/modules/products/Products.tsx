@@ -12,7 +12,6 @@ const TitleSkeleton = () => (
 const Products = () => {
   const { categoryId } = useParams<{ categoryId: string }>();
 
-  // Convert categoryId to a number or undefined
   const categoryIdNumber = categoryId ? parseInt(categoryId, 10) : undefined;
 
   const {
@@ -29,7 +28,6 @@ const Products = () => {
 
   const products = productsData?.items || [];
 
-  // Determine the title or show skeleton based on loading state
   const renderTitle = () => {
     if (categoryIdNumber) {
       if (isCategoryLoading) {

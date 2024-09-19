@@ -9,7 +9,7 @@ const Navbar = () => {
     <>
       {/* Render MobileNavBar for small screens */}
       <div className='block lg:hidden'>
-        <MobileNavbar />
+        <MobileNavbar user={user} logout={logout} />
       </div>
 
       {/* Render DesktopNavBar for large screens */}

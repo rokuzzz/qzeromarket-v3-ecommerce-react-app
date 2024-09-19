@@ -116,8 +116,6 @@ const ProfileCard = ({
             </div>
           </div>
           <div className='mt-auto pt-4 w-full md:text-left self-end'>
-            {' '}
-            {/* Ensuring the button is at the end */}
             <Button
               variant='outline'
               size='sm'
