@@ -23,7 +23,7 @@ import { CardFooter } from '../shared/components/ui/card';
 
 const loginFormSchema = z.object({
   email: z.string().email('Invalid email address'),
-  password: z.string().min(8, 'Password must be at least 8 characters'),
+  password: z.string().min(1, 'Filed is required'),
 });
 
 const Login = () => {
@@ -68,7 +68,7 @@ const Login = () => {
   };
 
   return (
-    <div className='flex items-center justify-center min-h-screen -mt-20 sm:-mt-28'>
+    <div className='flex justify-center mt-16'>
       <div className='w-full max-w-md p-8 space-y-6 bg-white rounded-lg sm:shadow-lg'>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4'>

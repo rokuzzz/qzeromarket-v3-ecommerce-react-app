@@ -131,8 +131,8 @@ const ProfileCard = ({
 
   return (
     <div className='pt-4'>
-      <h2 className='text-2xl font-bold mb-4'>User Profile</h2>
-      <Card className='w-full bg-white shadow-xl border border-gray-200 rounded-lg overflow-hidden'>
+      <h2 className='text-2xl font-bold sm:ml-0 ml-5 mb-4'>User Profile</h2>
+      <Card className='w-full bg-white shadow-xl sm:border border-none border-gray-200 rounded-lg overflow-hidden'>
         <CardContent className='p-4 sm:p-8'>{cardContent()}</CardContent>
       </Card>
     </div>

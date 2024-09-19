@@ -11,6 +11,7 @@ import { UserProvider } from '../src/modules/users/context/userContext';
 import PublicRoute from './modules/shared/components/Routes/PublicRoute';
 import ProtectedRoute from './modules/shared/components/Routes/ProtectedRoute';
 import ErrorPage from './modules/shared/pages/ErrorPage';
+import Register from './modules/auth/Register';
 import Login from './modules/auth/Login';
 import UserProfile from './modules/users/UserProfile';
 import AdminDashboard from './modules/users//AdminDashboard';
@@ -51,7 +52,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/register',
-        element: <div>Register page</div>,
+        element: (
+          <PublicRoute>
+            <Register />
+          </PublicRoute>
+        ),
       },
       {
         path: '/user-profile',
