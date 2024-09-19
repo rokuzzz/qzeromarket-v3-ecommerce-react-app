@@ -7,12 +7,16 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
-import Home from './modules/products/Home';
+import { UserProvider } from '../src/modules/users/context/userContext';
+import PublicRoute from './modules/shared/components/Routes/PublicRoute';
+import ProtectedRoute from './modules/shared/components/Routes/ProtectedRoute';
+import ErrorPage from './modules/shared/pages/ErrorPage';
 import Login from './modules/auth/Login';
 import UserProfile from './modules/users/UserProfile';
 import AdminDashboard from './modules/users//AdminDashboard';
-import { UserProvider } from '../src/modules/users/context/userContext';
-import PublicRoute from './modules/shared/components/Routes/PublicRoute';
+import Products from './modules/products/Products';
+import ProductDetails from './modules/products/ProductDetails';
+import { CartProvider } from './modules/cart/context/cartContext';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
@@ -23,11 +27,19 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <div>Error page</div>,
+    errorElement: <ErrorPage />,
     children: [
       {
-        path: '/',
-        element: <Home />,
+        path: '/products',
+        element: <Products />,
+      },
+      {
+        path: '/products/category/:categoryId',
+        element: <Products />,
+      },
+      {
+        path: '/products/:productId',
+        element: <ProductDetails />,
       },
       {
         path: '/login',
@@ -43,23 +55,19 @@ const router = createBrowserRouter([
       },
       {
         path: '/user-profile',
-        element: <UserProfile />,
+        element: (
+          <ProtectedRoute>
+            <UserProfile />
+          </ProtectedRoute>
+        ),
       },
       {
         path: '/admin-dashboard',
-        element: <AdminDashboard />,
-      },
-      {
-        path: '/products/:productId',
-        element: <div>Product details page</div>,
-      },
-      {
-        path: '/profile',
-        element: <div>User profile page</div>,
-      },
-      {
-        path: '/orders',
-        element: <div>Order history page</div>,
+        element: (
+          <ProtectedRoute>
+            <AdminDashboard />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
@@ -70,13 +78,12 @@ root.render(
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools />
       <UserProvider>
-        <RouterProvider router={router} />
+        <CartProvider>
+          <RouterProvider router={router} />
+        </CartProvider>
       </UserProvider>
     </QueryClientProvider>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
