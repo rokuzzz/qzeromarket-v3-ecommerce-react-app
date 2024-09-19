@@ -36,16 +36,16 @@ const Products = () => {
         return <TitleSkeleton />;
       }
       return (
-        <h2 className='text-3xl font-bold mb-4'>
+        <h2 className='text-2xl font-bold mb-4'>
           {categoryData?.name || 'Category Not Found'}
         </h2>
       );
     }
-    return <h2 className='text-3xl font-bold mb-4'>All Products</h2>;
+    return <h2 className='text-2xl font-bold mb-8'>All Products</h2>;
   };
 
   return (
-    <div className='container px-0 py-8'>
+    <div className='container px-0 py-12'>
       {renderTitle()}
       <ProductList
         products={products}
