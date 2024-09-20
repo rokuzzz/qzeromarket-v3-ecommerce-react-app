@@ -59,6 +59,30 @@ export const useGetProductById = (
   });
 };
 
+// In productApi.ts
+export const getProductsByIds = async (
+  productIds: number[]
+): Promise<GetProductDto[]> => {
+  const searchParams = new URLSearchParams();
+  productIds.forEach((id) => searchParams.append('ids', id.toString()));
+  return api.get('products/by-ids', { searchParams }).json<GetProductDto[]>();
+};
+
+export const useGetProductsByIds = (
+  productIds: number[],
+  options?: Omit<
+    UseQueryOptions<GetProductDto[], ApiError, GetProductDto[]>,
+    'queryKey' | 'queryFn'
+  >
+) => {
+  return useQuery<GetProductDto[], ApiError>({
+    queryKey: ['getProductsByIds', productIds],
+    queryFn: () => getProductsByIds(productIds),
+    enabled: productIds.length > 0,
+    ...options,
+  });
+};
+
 export const useCreateProduct = (
   options?: UseMutationOptions<GetProductDto, ApiError, CreateProductDto>
 ) => {
