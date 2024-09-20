@@ -1,6 +1,6 @@
 # QZM Ecommerce App
 
-[Link to hosting](https://fs18-java-frontend.vercel.app/games)
+[Link to hosting](#)
 
 ## Description
 
