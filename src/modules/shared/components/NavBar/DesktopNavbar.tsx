@@ -1,9 +1,9 @@
-import React from 'react';
 import { useLocation } from 'react-router-dom';
+
+import { GetUserDto } from '../../../users/types/userTypes';
 import { useGetAllCategories } from '../../../products/api/categoryApi';
 import DesktopMainNavbar from './DesktopMainNavbar';
-import CategoriesNavbar from './CategoriesNavbar';
-import { GetUserDto } from '@/users/types/userTypes';
+import DesktopCategoriesNavbar from './DesktopCategoriesNavbar';
 
 interface DesktopNavbarProps {
   user?: GetUserDto;
@@ -21,7 +21,10 @@ const DesktopNavbar = ({ user, logout }: DesktopNavbarProps) => {
     <nav className='z-50 bg-white'>
       <DesktopMainNavbar user={user} logout={logout} />
       {isProductsPage && (
-        <CategoriesNavbar categories={categories} isLoading={isLoading} />
+        <DesktopCategoriesNavbar
+          categories={categories}
+          isLoading={isLoading}
+        />
       )}
     </nav>
   );

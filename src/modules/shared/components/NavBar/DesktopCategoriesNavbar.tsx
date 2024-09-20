@@ -7,7 +7,7 @@ interface CategoriesNavbarProps {
   isLoading: boolean;
 }
 
-const CategoriesNavbar = ({ categories, isLoading }: CategoriesNavbarProps) => (
+const DesktopCategoriesNavbar = ({ categories, isLoading }: CategoriesNavbarProps) => (
   <div className='bg-gray-100'>
     <div className='flex justify-between items-center px-16 xl:px-40 py-2'>
       <div className='flex-1 flex justify-between items-center'>
@@ -31,4 +31,4 @@ const CategoriesNavbar = ({ categories, isLoading }: CategoriesNavbarProps) => (
   </div>
 );
 
-export default CategoriesNavbar;
+export default DesktopCategoriesNavbar;
