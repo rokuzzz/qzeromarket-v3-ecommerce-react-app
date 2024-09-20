@@ -47,7 +47,7 @@ const UserProfileContainerSkeleton = () => {
                     <Skeleton className='h-5 w-[64px]' />
                   </TableCell>
                   <TableCell className='md:pr-16'>
-                    <Skeleton className='h-5 w-[700px]' />
+                    <Skeleton className='h-5 w-[100px] sm:w-[250px] md:w-[350px] lg:w-[600px] xl:w-[700px]' />
                   </TableCell>
                   <TableCell>
                     <Skeleton className='h-5 w-[50px]' />
