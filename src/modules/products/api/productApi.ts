@@ -59,16 +59,46 @@ export const useGetProductById = (
   });
 };
 
+export const getProductsByIds = async (
+  productIds: number[]
+): Promise<GetProductDto[]> => {
+  const searchParams = new URLSearchParams();
+  productIds.forEach((id) => searchParams.append('ids', id.toString()));
+  return api.get('products/by-ids', { searchParams }).json<GetProductDto[]>();
+};
+
+export const useGetProductsByIds = (
+  productIds: number[],
+  options?: Omit<
+    UseQueryOptions<GetProductDto[], ApiError, GetProductDto[]>,
+    'queryKey' | 'queryFn'
+  >
+) => {
+  return useQuery<GetProductDto[], ApiError>({
+    queryKey: ['getProductsByIds', productIds],
+    queryFn: () => getProductsByIds(productIds),
+    enabled: productIds.length > 0,
+    ...options,
+  });
+};
+
 export const useCreateProduct = (
   options?: UseMutationOptions<GetProductDto, ApiError, CreateProductDto>
 ) => {
   return useMutation<GetProductDto, ApiError, CreateProductDto>({
     mutationFn: async (productData) => {
       const formData = new FormData();
+
       Object.entries(productData).forEach(([key, value]) => {
-        if (key === 'productImages' && Array.isArray(value)) {
-          value.forEach((file) => formData.append('productImages', file));
-        } else {
+        if (key === 'productImage' && value) {
+          if (value instanceof FileList || Array.isArray(value)) {
+            for (let i = 0; i < value.length; i++) {
+              formData.append('productImage', value[i]);
+            }
+          } else if (value instanceof File) {
+            formData.append('productImage', value);
+          }
+        } else if (key !== 'productImages') {
           formData.append(key, value.toString());
         }
       });
@@ -87,6 +117,7 @@ export const useUpdateProduct = (
     mutationFn: async (productData) => {
       const formData = new FormData();
       Object.entries(productData).forEach(([key, value]) => {
+        console.log(`${key}: ${value}`);
         if (key === 'productImages' && Array.isArray(value)) {
           value.forEach((file) => formData.append('productImages', file));
         } else if (value !== undefined) {

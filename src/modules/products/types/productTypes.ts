@@ -9,13 +9,13 @@ export interface GetProductDto extends BaseDto {
   productImage: { url: string }[];
 }
 
-export interface CreateProductDto extends BaseDto {
+export interface CreateProductDto {
   title: string;
   description: string;
   price: number;
   stock: number;
   categoryId: number;
-  productImages?: File[];
+  productImage: File[];
 }
 
 export interface UpdateProductDto extends BaseDto {

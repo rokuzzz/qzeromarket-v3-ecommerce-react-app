@@ -19,7 +19,7 @@ const ProductDetails = () => {
     error,
   } = useGetProductById(productIdNumber);
 
-  const { data: categoryData, isLoading: isCategoryLoading } =
+  const { data: categoryData } =
     useGetCategoryById(product?.categoryId || null);
 
   const [quantity, setQuantity] = useState(1);

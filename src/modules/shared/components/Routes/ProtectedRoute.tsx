@@ -15,15 +15,15 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   requiredRole,
   redirectTo = '/login',
 }) => {
-  const { user } = useUser();
+  const { user, isLoading } = useUser();
   const location = useLocation();
 
-  if (!user) {
+  if (!user && !isLoading) {
     // User is not authenticated
     return <Navigate to={redirectTo} state={{ from: location }} replace />;
   }
 
-  if (requiredRole && user.role !== requiredRole) {
+  if (requiredRole && user?.role !== requiredRole) {
     // User does not have the required role, redirect to profile
     return <Navigate to='/user-profile' replace />;
   }
