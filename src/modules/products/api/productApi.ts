@@ -59,7 +59,6 @@ export const useGetProductById = (
   });
 };
 
-// In productApi.ts
 export const getProductsByIds = async (
   productIds: number[]
 ): Promise<GetProductDto[]> => {
@@ -89,10 +88,17 @@ export const useCreateProduct = (
   return useMutation<GetProductDto, ApiError, CreateProductDto>({
     mutationFn: async (productData) => {
       const formData = new FormData();
+
       Object.entries(productData).forEach(([key, value]) => {
-        if (key === 'productImages' && Array.isArray(value)) {
-          value.forEach((file) => formData.append('productImages', file));
-        } else {
+        if (key === 'productImage' && value) {
+          if (value instanceof FileList || Array.isArray(value)) {
+            for (let i = 0; i < value.length; i++) {
+              formData.append('productImage', value[i]);
+            }
+          } else if (value instanceof File) {
+            formData.append('productImage', value);
+          }
+        } else if (key !== 'productImages') {
           formData.append(key, value.toString());
         }
       });
@@ -111,6 +117,7 @@ export const useUpdateProduct = (
     mutationFn: async (productData) => {
       const formData = new FormData();
       Object.entries(productData).forEach(([key, value]) => {
+        console.log(`${key}: ${value}`);
         if (key === 'productImages' && Array.isArray(value)) {
           value.forEach((file) => formData.append('productImages', file));
         } else if (value !== undefined) {
