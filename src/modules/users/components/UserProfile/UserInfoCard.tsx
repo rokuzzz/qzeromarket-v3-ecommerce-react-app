@@ -14,7 +14,7 @@ const UserInfoCard = ({ user }: UserInfoCardProps) => {
     <div className='flex items-center space-x-4 mb-6'>
       <Avatar className='h-20 w-20'>
         <AvatarImage
-          src={`http://localhost:5169/${user.avatar}`}
+          src={`https://romankuzero-ecommerce-api-2024.azurewebsites.net/${user.avatar}`}
           alt={`${user.firstName} ${user.lastName}`}
         />
         <AvatarFallback>

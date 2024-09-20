@@ -14,11 +14,11 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
   if (product.productImage.length > 1) {
     // If there are two or more images, swap their order
-    firstImageUrl = `http://localhost:5169/${product.productImage[1].url}`;
-    secondImageUrl = `http://localhost:5169/${product.productImage[0].url}`;
+    firstImageUrl = `https://romankuzero-ecommerce-api-2024.azurewebsites.net/${product.productImage[1].url}`;
+    secondImageUrl = `https://romankuzero-ecommerce-api-2024.azurewebsites.net/${product.productImage[0].url}`;
   } else {
     // If there's only one image or no images, keep the original order
-    firstImageUrl = `http://localhost:5169/${
+    firstImageUrl = `https://romankuzero-ecommerce-api-2024.azurewebsites.net/${
       product.productImage[0]?.url || ''
     }`;
     secondImageUrl = null;

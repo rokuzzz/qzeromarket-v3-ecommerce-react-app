@@ -5,7 +5,7 @@ interface ProductImageProps {
 
 const ProductImage = ({ imageUrl, title }: ProductImageProps) => {
   const imageSrc = imageUrl
-    ? `http://localhost:5169/${imageUrl}`
+    ? `https://romankuzero-ecommerce-api-2024.azurewebsites.net/${imageUrl}`
     : '/placeholder-image.png';
 
   return (

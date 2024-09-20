@@ -1,5 +1,4 @@
-import React from 'react';
-import { Plus, Minus, Trash } from 'lucide-react';
+import { Plus, Minus } from 'lucide-react';
 
 import { Button } from '../../shared/components/ui/button';
 import { useCart } from '../../cart/context/cartContext';
@@ -33,7 +32,7 @@ const CartItem = ({ cartItem }: CartItemProps) => {
   };
 
   const productImageUrl = product.productImage[0]?.url
-    ? `http://localhost:5169/${product.productImage[0].url}`
+    ? `https://romankuzero-ecommerce-api-2024.azurewebsites.net/${product.productImage[0].url}`
     : '/placeholder-image.png';
 
   return (

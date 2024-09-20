@@ -11,6 +11,7 @@ import { UserProvider } from '../src/modules/users/context/userContext';
 import PublicRoute from './modules/shared/components/Routes/PublicRoute';
 import ProtectedRoute from './modules/shared/components/Routes/ProtectedRoute';
 import ErrorPage from './modules/shared/pages/ErrorPage';
+import HomePage from './modules/shared/pages/HomePage';
 import Register from './modules/auth/Register';
 import Login from './modules/auth/Login';
 import UserProfilePage from './modules/users/UserProfilePage';
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: '/',
+        element: <HomePage />,
+      },
       {
         path: '/products',
         element: <Products />,
