@@ -6,14 +6,14 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from '../../shared/components/ui/card';
-import { Button } from '../../shared/components/ui/button';
-import { GetUserDto } from '../types/userTypes';
-import EditProfileDialog from './EditProfileDialog';
+} from '../../../shared/components/ui/card';
+import { Button } from '../../../shared/components/ui/button';
+import { GetUserDto } from '../../types/userTypes';
+import EditProfileDialog from '../EditUserDialog';
 import UserProfileContainerSkeleton from './UserProfileContainerSkeleton';
 import UserInfoCard from './UserInfoCard';
 import OrderList from './OrderList';
-import { ApiError } from '../../shared/types/sharedTypes';
+import { ApiError } from '../../../shared/types/sharedTypes';
 
 interface UserProfileContainerProps {
   user?: GetUserDto;

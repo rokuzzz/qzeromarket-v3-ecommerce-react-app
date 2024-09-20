@@ -6,7 +6,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '../../shared/components/ui/table';
+} from '../../../shared/components/ui/table';
 import OrderRow from './OrderRow';
 
 interface OrderListProps {

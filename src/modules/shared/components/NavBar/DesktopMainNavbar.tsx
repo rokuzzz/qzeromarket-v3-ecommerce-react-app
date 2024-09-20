@@ -47,7 +47,7 @@ const DesktopMainNavbar: React.FC<MainNavbarProps> = ({ user, logout }) => {
               <CustomNavLink to='/admin-dashboard'>Dashboard</CustomNavLink>
             )}
             <Button
-              className='text-red-500'
+              className='text-red-500 pr-0'
               variant='link'
               size='sm'
               onClick={handleLogout}

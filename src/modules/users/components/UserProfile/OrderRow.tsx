@@ -1,7 +1,7 @@
 import React from 'react';
-import { TableRow, TableCell } from '../../shared/components/ui/table';
+import { TableRow, TableCell } from '../../../shared/components/ui/table';
 import { useQueries } from '@tanstack/react-query';
-import { api } from '../../shared/api/apiClient';
+import { api } from '../../../shared/api/apiClient';
 
 interface OrderRowProps {
   order: any;

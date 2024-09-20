@@ -90,9 +90,9 @@ const EditProfileDialog: React.FC<EditProfileDialogProps> = ({
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit Profile</DialogTitle>
+          <DialogTitle>Edit User</DialogTitle>
           <DialogDescription>
-            Update your profile information below.
+            Update user profile information below.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>

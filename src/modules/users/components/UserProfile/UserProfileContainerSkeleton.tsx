@@ -4,8 +4,8 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from '../../shared/components/ui/card';
-import { Skeleton } from '../../shared/components/ui/skeleton';
+} from '../../../shared/components/ui/card';
+import { Skeleton } from '../../../shared/components/ui/skeleton';
 import {
   Table,
   TableBody,
@@ -13,7 +13,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '../../shared/components/ui/table';
+} from '../../../shared/components/ui/table';
 
 const UserProfileContainerSkeleton = () => {
   return (

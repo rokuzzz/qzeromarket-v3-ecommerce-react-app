@@ -1,5 +1,5 @@
 import { useUser } from './context/userContext';
-import UserProfileContainer from './components/UserProfileContainer';
+import UserProfileContainer from './components/UserProfile/UserProfileContainer';
 import { useGetAllOrders } from './api/orderApi';
 
 const UserProfilePage = () => {

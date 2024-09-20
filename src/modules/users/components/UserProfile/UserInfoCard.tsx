@@ -2,8 +2,8 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from '../../shared/components/ui/avatar';
-import { GetUserDto } from '../types/userTypes';
+} from '../../../shared/components/ui/avatar';
+import { GetUserDto } from '../../types/userTypes';
 
 interface UserInfoCardProps {
   user: GetUserDto;
