@@ -1,8 +1,7 @@
-import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useGetAllProducts } from './api/productApi';
-import { useGetCategoryById } from './api/categoryApi';
+import { useGetCategoryById } from '../categories/api/categoryApi';
 import ProductList from './components/Products/ProductList';
 
 const TitleSkeleton = () => (

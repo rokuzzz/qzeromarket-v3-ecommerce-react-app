@@ -12,7 +12,7 @@ import {
   CreateCategoryDto,
   PartialUpdateCategoryDto,
   GetCategoriesParams,
-} from '../types/categoryTypes';
+} from '../../categories/types/categoryTypes';
 
 export const useGetAllCategories = (
   params?: GetCategoriesParams,

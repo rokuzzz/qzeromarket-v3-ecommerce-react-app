@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useGetProductById } from './api/productApi';
-import { useGetCategoryById } from './api/categoryApi';
+import { useGetCategoryById } from '../categories/api/categoryApi';
 import ProductImage from './components/ProductDetails/ProductImage';
 import ProductMainInfo from './components/ProductDetails/ProductMainInfo';
 import ProductAdditionalInfo from './components/ProductDetails/ProductAdditionalInfo';

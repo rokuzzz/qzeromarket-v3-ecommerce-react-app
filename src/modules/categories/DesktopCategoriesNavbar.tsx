@@ -1,13 +1,16 @@
 import React from 'react';
-import { CustomNavLink } from '../ui/CustomNavLink';
-import { GetCategoryDto } from '@/products/types/categoryTypes';
+import { CustomNavLink } from '../shared/components/ui/CustomNavLink';
+import { GetCategoryDto } from './types/categoryTypes';
 
 interface CategoriesNavbarProps {
   categories: GetCategoryDto[];
   isLoading: boolean;
 }
 
-const DesktopCategoriesNavbar = ({ categories, isLoading }: CategoriesNavbarProps) => (
+const DesktopCategoriesNavbar = ({
+  categories,
+  isLoading,
+}: CategoriesNavbarProps) => (
   <div className='bg-gray-100'>
     <div className='flex justify-between items-center px-16 xl:px-40 py-2'>
       <div className='flex-1 flex justify-between items-center'>

@@ -1,9 +1,9 @@
 import { useLocation } from 'react-router-dom';
 
 import { GetUserDto } from '../../../users/types/userTypes';
-import { useGetAllCategories } from '../../../products/api/categoryApi';
+import { useGetAllCategories } from '../../../categories/api/categoryApi';
 import DesktopMainNavbar from './DesktopMainNavbar';
-import DesktopCategoriesNavbar from './DesktopCategoriesNavbar';
+import DesktopCategoriesNavbar from '../../../categories/DesktopCategoriesNavbar';
 
 interface DesktopNavbarProps {
   user?: GetUserDto;
