@@ -12,7 +12,7 @@ import { GetUserDto } from '../../types/userTypes';
 import EditProfileDialog from '../EditUserDialog';
 import UserProfileContainerSkeleton from './UserProfileContainerSkeleton';
 import UserInfoCard from './UserInfoCard';
-import OrderList from './OrderList';
+import OrderList from '../../../orders/components/OrderList';
 import { ApiError } from '../../../shared/types/sharedTypes';
 
 interface UserProfileContainerProps {

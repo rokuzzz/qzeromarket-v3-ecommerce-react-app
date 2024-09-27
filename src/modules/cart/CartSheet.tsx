@@ -12,7 +12,7 @@ import { Button } from '../shared/components/ui/button';
 import { useCart } from '../cart/context/cartContext';
 import CartItem from './components/CartItem';
 import { Link, useNavigate } from 'react-router-dom';
-import { useCreateOrder } from '../users/api/orderApi';
+import { useCreateOrder } from '../orders/api/orderApi';
 import { useUser } from '../users/context/userContext';
 import { useToast } from '../shared/hooks/use-toast';
 
