@@ -1,6 +1,6 @@
 # QZM Ecommerce App
 
-[Link to hosting](#)
+[Deployment link](https://qzeromarket-v3.netlify.app/)
 
 ## Description
 
