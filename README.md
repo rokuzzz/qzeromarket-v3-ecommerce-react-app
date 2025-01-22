@@ -4,7 +4,7 @@
 
 ## Description
 
-This is a frontend project for an e-commerce clothing store, created as part of the Integrify Academy Full Stack course. It works with a custom backend API found [here](https://github.com/rokuzzz/fs18_CSharp_FullStack_Backend). The store is fully functional but uses mock data - no real products or transactions are involved. It's designed to showcase e-commerce functionality in a simulated environment.
+This is a frontend project for an e-commerce clothing store, created as part of the Integrify Academy Full Stack course. It works with a custom backend API found [here](https://github.com/rokuzzz/qzeromarket-v3-aspnet-api). The store is fully functional but uses mock data - no real products or transactions are involved. It's designed to showcase e-commerce functionality in a simulated environment.
 
 This project was an excellent opportunity to sharpen my skills in building complex e-commerce applications with React. It challenged me to work effectively under pressure, simulating a real-world scenario where I had to deliver a functional product within a very limited timeframe.
 
