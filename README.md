@@ -42,19 +42,22 @@ Each module typically contains:
 Some modules include a `context/` for state management.
 
 ## Installation
+1. Fork this repository and clone your fork to your local machine.
+2. Navigate to the project directory.
+3. Install dependencies with `npm install`.
+4. Start the development server with `npm run start`.
 
-- Fork this repository and clone your fork to your local machine.
-- Pull all the data from your fork.
-- Run `npm install`.
-- Run `npm run start`.
+**Important!** This project uses a deployed API by default. If the deployed API becomes inaccessible, you'll need to switch to a local backend:
+1. Set up and run the backend locally from the backend repository (available at [qzeromarket-v3-aspnet-api](https://github.com/rokuzzz/qzeromarket-v3-aspnet-api))
+2. Update the API endpoint in `src/modules/api/apiClient.ts` to point to your local backend
 
-**Important:** Before running this project, you need to set up and run the backend. Please visit the backend repository and follow the installation instructions provided there. The frontend won't function properly without the backend running.
+For local development setup, please refer to the backend repository's installation instructions.
 
 ## Tech Stack
 
 This project was implemented using React and the following packages:
 
-- [ky]([https://www.npmjs.com/package/axios](https://github.com/sindresorhus/ky) for fetching data from the server
+- [ky](https://github.com/sindresorhus/ky) for fetching data from the server
 - [TanStack Query](https://tanstack.com/query/latest) for server state management
 - [Shadcn/UI](https://ui.shadcn.com/) for UI/UX
 - [React-Router-Dom](https://reactrouter.com/en/main) for routing
