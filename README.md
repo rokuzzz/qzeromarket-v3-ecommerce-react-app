@@ -20,11 +20,13 @@ This project was an excellent opportunity to sharpen my skills in building compl
 
 - `src`: The main source code directory.
   - `modules`: Contains feature-specific modules.
-    - `auth`: Authentication-related components and logic.
-    - `cart`: Shopping cart functionality.
-    - `products`: Product listing and details (+ categories).
+    - `auth`
+    - `cart`
+    - `categories`
+    - `orders`
+    - `products`
     - `shared`: Shared components and utilities.
-    - `users`: User management features (+ orders).
+    - `users`
   - `App.tsx`: The main React component.
   - `index.css`: Global CSS styles.
   - `index.tsx`: Entry point of the React application.
